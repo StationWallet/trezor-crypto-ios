@@ -3,16 +3,15 @@ Pod::Spec.new do |s|
   s.version          = '0.0.9'
   s.summary          = 'Heavily optimized cryptography algorithms for iOS.'
 
-  s.homepage         = 'https://github.com/TrustWallet/trezor-crypto-ios'
+  s.homepage         = 'https://github.com/StationWallet/trezor-crypto-ios'
   s.license          = { type: 'MIT', file: 'trezor-crypto/LICENSE' }
   s.authors          = { 'Alejandro Isaza' => 'al@isaza.ca' }
-  s.source           = { git: 'https://github.com/TrustWallet/trezor-crypto-ios.git', tag: s.version, submodules: true }
+  s.source           = { git: 'https://github.com/StationWallet/trezor-crypto-ios.git'}
 
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.10'
 
   s.prepare_command = <<-CMD
-    git submodule update --init
     sed -i '' -e 's:ed25519-donna/::g' ./**/*.c
     sed -i '' -e 's:ed25519-donna/::g' ./**/*.h
     sed -i '' -e 's:USE_ETHEREUM 0:USE_ETHEREUM 1:g' trezor-crypto/options.h
